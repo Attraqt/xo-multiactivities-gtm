@@ -346,11 +346,9 @@ const arrayOrSplit = (input, separator) => {
   return input ? input.split(separator) : [];
 };
 // set lib URL
-// todo isIe
 const isIe = false;
-
 const url = "https://cdn.attraqt.io/xo.activity-";
-const version = "1";
+const version = "1.8.3";
 const compat = isIe ? ".compat.min.js" : ".min.js";
 const finalLibrary = url + version + compat;
 
@@ -416,7 +414,7 @@ data.targets.forEach((target) => {
   ]);
   activities.push(activity);
 });
-pushQ(["send", activities]);
+pushQ(["sendAndStoreClusters", activities]);
 
 if (copyFromWindow("xo.activity.isInitialized")) {
   callInWindow("xo.activity.handleQueuedEvents", "");
@@ -612,9 +610,9 @@ scenarios:
     \   {\n      name: \"locale\",\n      value: \"en_GB\",\n    },\n  ],\n  activitySegments:\
     \ [\"seg-a\", \"seg-b\"],\n};\n\nconst activitiesToSend = [];\n\nmock(\"createQueue\"\
     , () => {\n  return (args) => {\n    const cmd = args[0];\n    if (cmd === \"\
-    send\") {\n      activitiesToSend.push(args[1]);\n    }\n  };\n});\n\n// Call\
-    \ runCode to run the template's code.\nrunCode(mockData);\n\n// Check only one\
-    \ call to \nassertThat(activitiesToSend.length).isEqualTo(1);\nassertThat(activitiesToSend[0]).isEqualTo([\n\
+    sendAndStoreClusters\") {\n      activitiesToSend.push(args[1]);\n    }\n  };\n\
+    });\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\n// Check\
+    \ only one call to \nassertThat(activitiesToSend.length).isEqualTo(1);\nassertThat(activitiesToSend[0]).isEqualTo([\n\
     \  {\n    action: \"buy\",\n    target: { product: \"id-1\" },\n    metadata:\
     \ {\n      currency: \"EUR\",\n      locale: \"en_GB\",\n      quantity: 2,\n\
     \      price: 12300,\n      orderId: \"12345-6789\",\n    },\n    segments: [\"\
