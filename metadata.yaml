@@ -2,6 +2,8 @@ homepage: "https://www.attraqt.com/"
 documentation: "http://attraqt.gitbook.io/"
 versions:
   # Latest version
-  - sha: 1f8ca2580734daf6eac07285922b39ac835c63fa
-    changeNotes: release
+    - sha: 12297a0ce581b82088d57bf3083c5452530177bf
+      changeNotes: sdk version upgrade
   # Older versions
+    - sha: 1f8ca2580734daf6eac07285922b39ac835c63fa
+      changeNotes: release
